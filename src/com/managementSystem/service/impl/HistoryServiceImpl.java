@@ -20,6 +20,11 @@ public class HistoryServiceImpl implements HistoryService {
     }
 
     @Override
+    public void delUserHistoryById(int id) {
+        historyDao.delById(id);
+    }
+
+    @Override
     public List<History> findUserHistoryById(int id) {
         return historyDao.findById(id);
     }

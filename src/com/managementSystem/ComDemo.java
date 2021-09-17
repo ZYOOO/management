@@ -1,8 +1,12 @@
 package com.managementSystem;
 
+import com.managementSystem.domain.History;
+import com.managementSystem.service.HistoryService;
+import com.managementSystem.service.impl.HistoryServiceImpl;
 import gnu.io.CommPortIdentifier;
 
 import java.util.Enumeration;
+import java.util.List;
 
 /**
  * @author ZYOOO
@@ -10,17 +14,7 @@ import java.util.Enumeration;
  */
 public class ComDemo {
     public static void main(String[] args) {
-        CommPortIdentifier portId;
-        Enumeration en = CommPortIdentifier.getPortIdentifiers();
-        // iterate through the ports.
-        while (en.hasMoreElements()) {
-            portId = (CommPortIdentifier) en.nextElement();
-            if (portId.getPortType() == CommPortIdentifier.PORT_SERIAL) {
-                System.out.println(portId.getName());
-            }
-        }
-    }
-    public void listPortChoices() {
 
     }
+
 }

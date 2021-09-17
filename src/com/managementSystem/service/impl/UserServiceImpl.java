@@ -6,6 +6,7 @@ import com.managementSystem.dao.impl.HistoryDaoImpl;
 import com.managementSystem.dao.impl.UserDaoImpl;
 import com.managementSystem.domain.History;
 import com.managementSystem.domain.User;
+import com.managementSystem.service.HistoryService;
 import com.managementSystem.service.UserService;
 
 import java.util.List;
@@ -16,10 +17,21 @@ import java.util.List;
  */
 public class UserServiceImpl implements UserService {
     UserDao userDao = new UserDaoImpl();
+    HistoryService historyService = new HistoryServiceImpl();
+
+    @Override
+    public boolean verifyUserById(String id) {
+        return userDao.verifyById(Integer.parseInt(id));
+    }
 
     @Override
     public boolean verifyUserById(int id) {
         return userDao.verifyById(id);
+    }
+
+    @Override
+    public User getUserById(int id) {
+        return userDao.getById(id);
     }
 
     @Override
@@ -40,6 +52,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUserById(int id) {
         userDao.deleteById(id);
+        historyService.delUserHistoryById(id);
     }
 
 }

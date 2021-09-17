@@ -12,6 +12,7 @@ import java.util.Map;
  */
 public interface UserDao {
     boolean verifyById(int id);
+    User getById(int id);
     List<User> findAllUser();
     void showAllUsers();
     void addUser(User user);

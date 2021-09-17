@@ -11,5 +11,6 @@ import java.util.List;
 public interface HistoryDao {
     void add(History history);
     void showAll();
+    void delById(int id);
     List<History> findById(int id);
 }

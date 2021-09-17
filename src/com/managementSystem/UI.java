@@ -24,6 +24,8 @@ public class UI extends JFrame{
 
     JPanel firstLeft = new JPanel();
     JPanel secondLeft = new JPanel();
+    JPanel secondLeft1 = new JPanel();
+    JPanel secondLeft2 = new JPanel();
 
     JPanel rightPanel = new JPanel();
 
@@ -40,6 +42,9 @@ public class UI extends JFrame{
 
     JLabel msg = new JLabel("");
     JLabel labelID = new JLabel("工号");
+    JLabel portMsg = new JLabel("正在搜寻设备串口");
+
+    JComboBox coms = new JComboBox();
 
     String userLine = new String();
     UserService userService = new UserServiceImpl();
@@ -58,6 +63,9 @@ public class UI extends JFrame{
         mainLeftPanel.setLayout(leftGrid);
         usersText.setEditable(false);
         usersText.setLineWrap(true);
+
+        coms.addItem("请选择串口");
+        coms.setEditable(false);
         showUsers();
         add.setPreferredSize(new Dimension(120,50));
         delete.setPreferredSize(new Dimension(120,50));
@@ -66,13 +74,19 @@ public class UI extends JFrame{
         firstLeft.setBackground(Color.lightGray);
         secondLeft.setBackground(Color.lightGray);
         firstLeft.add(usersText);
-        secondLeft.add(add);
-        secondLeft.add(delete);
-        secondLeft.add(refresh);
-        secondLeft.add(labelID);
-        secondLeft.add(searchText);
-        secondLeft.add(search);
-        secondLeft.add(msg);
+        secondLeft.setLayout(new GridLayout(2,1));
+        secondLeft1.add(portMsg);
+        secondLeft1.add(coms);
+        secondLeft2.setLayout(new FlowLayout());
+        secondLeft2.add(add);
+        secondLeft2.add(delete);
+        secondLeft2.add(refresh);
+        secondLeft2.add(labelID);
+        secondLeft2.add(searchText);
+        secondLeft2.add(search);
+        secondLeft2.add(msg);
+        secondLeft.add(secondLeft1);
+        secondLeft.add(secondLeft2);
         mainLeftPanel.add(firstLeft);
         mainLeftPanel.add(secondLeft);
         exceptionalUsersText.setEditable(false);
@@ -83,11 +97,8 @@ public class UI extends JFrame{
         mainRightPanel.setBackground(Color.lightGray);
         rightPanel.setBackground(Color.lightGray);
 
-
-
         rightPanel.add(exceptionalUsersText);
         mainRightPanel.add(rightPanel);
-
 
         setLayout(new GridLayout());
         add(mainLeftPanel);

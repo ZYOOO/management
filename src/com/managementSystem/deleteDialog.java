@@ -66,7 +66,7 @@ public class deleteDialog extends JDialog {
                 }
                 if(flag){
                     userService.deleteUserById(Integer.parseInt(str_id));
-                    msg.setText("删除成功");
+                    msg.setText("删除成功,请刷新");
                 }else{
                     msg.setText("请输入已存在的工号!!!");
                     idText.setText("");

@@ -28,6 +28,7 @@ public class HistoryDaoImpl implements HistoryDao {
                 ois = new ObjectInputStream(new FileInputStream(HISTORY_PATH));
                 map = (Map<Integer, List<History>>) ois.readObject();
             }
+            list = map.get(history.getId());
             list.add(history);
             map.put(history.getId(),list);
             oos = new ObjectOutputStream(new FileOutputStream(HISTORY_PATH));
@@ -72,6 +73,37 @@ public class HistoryDaoImpl implements HistoryDao {
             try {
                 if(ois != null){
                     ois.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void delById(int id) {
+        Map<Integer,List<History>> map = new HashMap<>();
+        List<History>  list = new ArrayList<History>();
+        ObjectInputStream ois = null;
+        ObjectOutputStream oos = null;
+        try{
+            ois = new ObjectInputStream(new FileInputStream(HISTORY_PATH));
+            map = (Map<Integer, List<History>>) ois.readObject();
+            list = map.get(id);
+            list.clear();
+            map.put(id,list);
+            oos = new ObjectOutputStream(new FileOutputStream(HISTORY_PATH));
+            oos.writeObject(map);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException();
+        }finally {
+            try {
+                if(ois != null){
+                    ois.close();
+                }
+                if(oos != null){
+                    oos.close();
                 }
             } catch (IOException e) {
                 e.printStackTrace();

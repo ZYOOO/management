@@ -88,7 +88,7 @@ public class addDialog extends JDialog {
                     }
                 }
                 userService.addUser(user);
-                msg.setText("添加成功");
+                msg.setText("添加成功,请刷新");
                 idText.setText("");
                 userText.setText("");
                 unitText.setText("");

@@ -1,15 +1,11 @@
 package com.managementSystem.dao.impl;
 
 import com.managementSystem.dao.UserDao;
-import com.managementSystem.domain.History;
 import com.managementSystem.domain.User;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 /**
  * @author ZYOOO
  * @date 2021-09-12 20:11
@@ -25,6 +21,17 @@ public class UserDaoImpl implements UserDao {
             }
         }
         return false;
+    }
+
+    @Override
+    public User getById(int id) {
+        List<User> list = findAllUser();
+        for (User user : list) {
+            if(id == user.getID()){
+                return user;
+            }
+        }
+        return null;
     }
 
     @Override

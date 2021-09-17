@@ -10,6 +10,7 @@ import java.util.List;
  */
 public interface HistoryService {
     void addHistory(History history);
-    void  showAllHistory();
+    void showAllHistory();
+    void delUserHistoryById(int id);
     List<History> findUserHistoryById(int id);
 }
