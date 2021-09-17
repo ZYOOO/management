@@ -90,7 +90,9 @@ public class HistoryDaoImpl implements HistoryDao {
             ois = new ObjectInputStream(new FileInputStream(HISTORY_PATH));
             map = (Map<Integer, List<History>>) ois.readObject();
             list = map.get(id);
-            list.clear();
+            if(list != null){
+                list.clear();
+            }
             map.put(id,list);
             oos = new ObjectOutputStream(new FileOutputStream(HISTORY_PATH));
             oos.writeObject(map);

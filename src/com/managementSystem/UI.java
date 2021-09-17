@@ -42,7 +42,7 @@ public class UI extends JFrame{
 
     JLabel msg = new JLabel("");
     JLabel labelID = new JLabel("工号");
-    JLabel portMsg = new JLabel("正在搜寻设备串口");
+    JLabel portMsg = new JLabel("正在搜寻设备串口,请等待");
 
     JComboBox coms = new JComboBox();
 
@@ -51,7 +51,7 @@ public class UI extends JFrame{
     HistoryService historyService = new HistoryServiceImpl();
 
     UI (){
-        setSize(800,800);
+        setSize(800,860);
         setLocation(600,150);
         setVisible(true);
         setTitle("门禁管理系统");
@@ -73,8 +73,11 @@ public class UI extends JFrame{
         search.setPreferredSize(new Dimension(225,50));
         firstLeft.setBackground(Color.lightGray);
         secondLeft.setBackground(Color.lightGray);
+        secondLeft1.setBackground(Color.lightGray);
+        secondLeft2.setBackground(Color.lightGray);
+        firstLeft.setLayout(new FlowLayout());
         firstLeft.add(usersText);
-        secondLeft.setLayout(new GridLayout(2,1));
+        secondLeft.setLayout(new GridLayout(3,1));
         secondLeft1.add(portMsg);
         secondLeft1.add(coms);
         secondLeft2.setLayout(new FlowLayout());
@@ -176,6 +179,7 @@ public class UI extends JFrame{
         List<History> historyList = null;
         historyList =  historyService.findUserHistoryById(id);
         if (historyList == null){
+            searchText.setText("该人员暂无刷卡记录");
             exceptionalUsersText.setText("该人员暂无刷卡记录");
             return;
         }

@@ -7,7 +7,6 @@ package com.managementSystem;
 import com.managementSystem.domain.User;
 import com.managementSystem.service.UserService;
 import com.managementSystem.service.impl.UserServiceImpl;
-
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
 import java.awt.*;
@@ -18,11 +17,9 @@ import java.util.List;
 public class deleteDialog extends JDialog {
     //construct method 构造方法初始化弹窗样式
     JPanel mainPanel = new JPanel();
-
     GridLayout mainGrid = new GridLayout(3,1);
     JLabel msg = new JLabel("");
     JLabel ID = new JLabel("工号");
-
     JButton delete = new JButton("删除");
 
     JTextComponent idText = new JTextPane();
@@ -33,7 +30,7 @@ public class deleteDialog extends JDialog {
         this.setTitle("删除用户");
         this.setVisible(true);
         this.setLocation(800,400);
-        this.setSize(300,150);
+        this.setSize(300,250);
         this.setResizable(true);
 
         mainPanel.setLayout(mainGrid);
@@ -66,7 +63,7 @@ public class deleteDialog extends JDialog {
                 }
                 if(flag){
                     userService.deleteUserById(Integer.parseInt(str_id));
-                    msg.setText("删除成功,请刷新");
+                    msg.setText("删除成功,请刷新!!!   ");
                 }else{
                     msg.setText("请输入已存在的工号!!!");
                     idText.setText("");

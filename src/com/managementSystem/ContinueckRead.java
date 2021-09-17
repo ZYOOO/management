@@ -131,9 +131,11 @@ public class ContinueckRead extends Thread implements SerialPortEventListener{
         ui.portMsg.setText("串口搜寻完毕");
         currentCOM = (String) ui.coms.getSelectedItem();
         while (currentCOM.equals("请选择串口")) {
+            System.out.println(currentCOM);
             currentCOM = (String) ui.coms.getSelectedItem();
             if(!currentCOM.equals("请选择串口")){
                 ui.portMsg.setText("正在配置串口");
+                System.out.println("正在配置串口");
                 portList = CommPortIdentifier.getPortIdentifiers();
                 while (portList.hasMoreElements()) {
                     portId = (CommPortIdentifier) portList.nextElement();
@@ -219,7 +221,7 @@ public class ContinueckRead extends Thread implements SerialPortEventListener{
 //                e.printStackTrace();
 //            }
         } else {
-            i = cRead.startComPort();
+            return;
         }
     }
 

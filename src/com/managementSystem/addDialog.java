@@ -70,7 +70,7 @@ public class addDialog extends JDialog {
                     return;
                 }
                 if(str_id == null || str_id.equals("") || str_user == null || str_user.equals("") || str_unit == null || str_unit.equals("")){
-                    msg.setText("请输入完整信息");
+                    msg.setText("请输入完整信息!!!");
                     idText.setText("");
                     userText.setText("");
                     unitText.setText("");
@@ -83,12 +83,12 @@ public class addDialog extends JDialog {
                 List<User> allUsers = userService.findAllUsers();
                 for (User user1 : allUsers) {
                     if(user1.getID() == user.getID()){
-                        msg.setText("请不要输入已存在的工号");
+                        msg.setText("请不要输入已存在的工号!!!");
                         return;
                     }
                 }
                 userService.addUser(user);
-                msg.setText("添加成功,请刷新");
+                msg.setText("添加成功,请刷新!!!");
                 idText.setText("");
                 userText.setText("");
                 unitText.setText("");
