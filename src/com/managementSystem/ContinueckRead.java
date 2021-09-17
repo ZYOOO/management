@@ -207,6 +207,7 @@ public class ContinueckRead extends Thread implements SerialPortEventListener{
         int i = cRead.startComPort();
         //串口配置完毕启动线程
         if (i == 1) {
+            i = 0;
             //UI显示串口配置完毕
             ui.portMsg.setText("串口配置完毕");
             // 启动线程来处理收到的数据

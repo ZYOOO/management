@@ -48,7 +48,6 @@ public class UI extends JFrame{
     JScrollPane scroll1 = new JScrollPane(exceptionalUsersText);
     JScrollPane scroll2 = new JScrollPane(usersText);
 
-
     UserService userService = new UserServiceImpl();
     HistoryService historyService = new HistoryServiceImpl();
 
