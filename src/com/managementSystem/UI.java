@@ -38,7 +38,7 @@ public class UI extends JFrame{
     JButton add = new JButton("添加用户");
     JButton delete = new JButton("删除用户");
     JButton refresh = new JButton("刷新界面");
-    JButton search = new JButton("查找人员历史体温记录");
+    JButton search = new JButton("查询人员历史体温记录");
 
     JLabel msg = new JLabel("");
     JLabel labelID = new JLabel("工号");
@@ -95,7 +95,7 @@ public class UI extends JFrame{
         exceptionalUsersText.setEditable(false);
         exceptionalUsersText.setLineWrap(true);
 
-        mainRightPanel.setBorder(BorderFactory.createTitledBorder("体温不正常用户历史信息"));
+        mainRightPanel.setBorder(BorderFactory.createTitledBorder("体温异常信息记录"));
         mainRightPanel.setLayout(rightGrid);
         mainRightPanel.setBackground(Color.lightGray);
         rightPanel.setBackground(Color.lightGray);
@@ -160,7 +160,7 @@ public class UI extends JFrame{
     }
     public void showUsers(){
         List<User> UsersList = userService.findAllUsers();
-        usersText.setText("--------------工号---------------姓名---------------公司单位--------------\n");
+        usersText.setText("--------------工号---------------姓名---------------部门单位--------------\n");
         for (User user : UsersList) {
             String id = new Integer(user.getID()).toString();
             switch (id.length()){
