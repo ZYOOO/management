@@ -179,7 +179,6 @@ public class UI extends JFrame{
         List<History> historyList = null;
         historyList =  historyService.findUserHistoryById(id);
         if (historyList == null){
-            searchText.setText("该人员暂无刷卡记录");
             exceptionalUsersText.setText("该人员暂无刷卡记录");
             return;
         }

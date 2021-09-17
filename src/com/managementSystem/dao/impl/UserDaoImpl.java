@@ -11,7 +11,7 @@ import java.util.List;
  * @date 2021-09-12 20:11
  */
 public class UserDaoImpl implements UserDao {
-    public static final String USER_PATH = "src/com/managementSystem/files/user.txt";
+    public static final String USER_PATH = "/files/user.txt";
     @Override
     public boolean verifyById(int id) {
         List<User> list = findAllUser();

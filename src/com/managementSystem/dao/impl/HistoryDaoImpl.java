@@ -14,7 +14,7 @@ import java.util.Map;
  * @date 2021-09-13 13:45
  */
 public class HistoryDaoImpl implements HistoryDao {
-    public static final String HISTORY_PATH = "src/com/managementSystem/files/history.txt";
+    public static final String HISTORY_PATH = "/files/history.txt";
 
     @Override
     public void add(History history) {
