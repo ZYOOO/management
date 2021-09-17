@@ -29,6 +29,9 @@ public class HistoryDaoImpl implements HistoryDao {
                 map = (Map<Integer, List<History>>) ois.readObject();
             }
             list = map.get(history.getId());
+            if(list == null){
+                list = new ArrayList<History>();
+            }
             list.add(history);
             map.put(history.getId(),list);
             oos = new ObjectOutputStream(new FileOutputStream(HISTORY_PATH));

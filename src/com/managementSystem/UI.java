@@ -46,7 +46,6 @@ public class UI extends JFrame{
 
     JComboBox coms = new JComboBox();
 
-    String userLine = new String();
     UserService userService = new UserServiceImpl();
     HistoryService historyService = new HistoryServiceImpl();
 
@@ -178,7 +177,9 @@ public class UI extends JFrame{
     public void showHistoryById(int id){
         List<History> historyList = null;
         historyList =  historyService.findUserHistoryById(id);
-        if (historyList == null){
+        //注意条件的顺序不能相反,为null的话不能用.size()
+        if (historyList == null || historyList.size() == 0){
+            msg.setText("该人员暂无刷卡记录");
             exceptionalUsersText.setText("该人员暂无刷卡记录");
             return;
         }
