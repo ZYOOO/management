@@ -11,7 +11,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentListener;
 import java.util.List;
 
 /**
@@ -32,8 +31,8 @@ public class UI extends JFrame{
     GridLayout leftGrid = new GridLayout(2,1);
     GridLayout rightGrid = new GridLayout(1,1);
 
-    JTextArea usersText = new JTextArea(25,30);
-    JTextArea exceptionalUsersText = new JTextArea(40,30);
+    JTextArea usersText = new JTextArea(500,30);
+    JTextArea exceptionalUsersText = new JTextArea(1000,30);
     JTextArea searchText = new JTextArea(1,10);
     JButton add = new JButton("添加用户");
     JButton delete = new JButton("删除用户");
@@ -45,6 +44,10 @@ public class UI extends JFrame{
     JLabel portMsg = new JLabel("正在搜寻设备串口,请等待");
 
     JComboBox coms = new JComboBox();
+
+    JScrollPane scroll1 = new JScrollPane(exceptionalUsersText);
+    JScrollPane scroll2 = new JScrollPane(usersText);
+
 
     UserService userService = new UserServiceImpl();
     HistoryService historyService = new HistoryServiceImpl();
@@ -62,7 +65,6 @@ public class UI extends JFrame{
         mainLeftPanel.setLayout(leftGrid);
         usersText.setEditable(false);
         usersText.setLineWrap(true);
-
         coms.addItem("请选择串口");
         coms.setEditable(false);
         showUsers();
@@ -74,8 +76,10 @@ public class UI extends JFrame{
         secondLeft.setBackground(Color.lightGray);
         secondLeft1.setBackground(Color.lightGray);
         secondLeft2.setBackground(Color.lightGray);
-        firstLeft.setLayout(new FlowLayout());
-        firstLeft.add(usersText);
+        mainRightPanel.setBackground(Color.lightGray);
+        rightPanel.setBackground(Color.lightGray);
+        firstLeft.setLayout(new BorderLayout());
+        firstLeft.add(scroll2);
         secondLeft.setLayout(new GridLayout(3,1));
         secondLeft1.add(portMsg);
         secondLeft1.add(coms);
@@ -93,13 +97,10 @@ public class UI extends JFrame{
         mainLeftPanel.add(secondLeft);
         exceptionalUsersText.setEditable(false);
         exceptionalUsersText.setLineWrap(true);
-
+        rightPanel.setLayout(new BorderLayout());
+        mainRightPanel.setLayout(new BorderLayout());
         mainRightPanel.setBorder(BorderFactory.createTitledBorder("体温异常信息记录"));
-        mainRightPanel.setLayout(rightGrid);
-        mainRightPanel.setBackground(Color.lightGray);
-        rightPanel.setBackground(Color.lightGray);
-
-        rightPanel.add(exceptionalUsersText);
+        rightPanel.add(scroll1);
         mainRightPanel.add(rightPanel);
 
         setLayout(new GridLayout());
