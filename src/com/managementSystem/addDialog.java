@@ -39,7 +39,7 @@ public class addDialog extends JDialog {
         this.setTitle("添加用户");
         this.setVisible(true);
         this.setLocation(800,400);
-        this.setSize(300,300);
+        this.setSize(300,330);
         this.setResizable(true);
 
         mainPanel.setLayout(mainGrid);

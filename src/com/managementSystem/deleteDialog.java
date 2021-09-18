@@ -30,7 +30,7 @@ public class deleteDialog extends JDialog {
         this.setTitle("删除用户");
         this.setVisible(true);
         this.setLocation(800,400);
-        this.setSize(300,250);
+        this.setSize(300,150);
         this.setResizable(true);
 
         mainPanel.setLayout(mainGrid);
@@ -64,6 +64,7 @@ public class deleteDialog extends JDialog {
                 if(flag){
                     userService.deleteUserById(Integer.parseInt(str_id));
                     msg.setText("删除成功,请刷新!!!   ");
+                    idText.setText("");
                 }else{
                     msg.setText("请输入已存在的工号!!!");
                     idText.setText("");
